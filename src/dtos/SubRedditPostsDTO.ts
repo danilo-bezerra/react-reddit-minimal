@@ -8,9 +8,10 @@ interface SubRedditPostDTO {
     title: string;
     score: number;
     num_comments: number;
-    permalink: string,
-    created: number,
-    url: string
+    permalink: string;
+    created: number;
+    url: string;
+    subreddit_name_prefixed: string;
   };
 }
 

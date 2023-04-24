@@ -1,11 +1,11 @@
 .sidebar {
   position: sticky;
-  top: 0;
+  top: 60px;
   max-width: 270px;
   width: 100%;
   padding: 1rem 0;
 
-  height: 100vh;
+  height: calc(100vh - 60px);
   background-color: #1a1a1b;
 
   header {
@@ -24,7 +24,7 @@
 
   ul {
     overflow-y: scroll;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 140px);
     overflow-x: hidden;
   }
 }

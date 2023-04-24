@@ -7,5 +7,6 @@ export interface SubRedditPostModel {
   score: number;
   num_comments: number;
   created: number;
-  url: string
+  url: string;
+  subreddit_name_prefixed: string;
 }

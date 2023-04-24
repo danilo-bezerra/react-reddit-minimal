@@ -1,0 +1,19 @@
+.main {
+  flex: 1;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.buttonActive {
+  background-color: #28f;
+}
+
+.searchTypeButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}

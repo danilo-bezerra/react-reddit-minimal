@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function PostCard({ post }: Props) {
-  console.log(post);
+  console.log();
   return (
     <div className={styles.postcard}>
       <div className={styles.scoreContainer}>
@@ -23,19 +23,23 @@ export default function PostCard({ post }: Props) {
         <TiArrowDownOutline size={24} />
       </div>
       <div className={styles.contentContainer}>
+        <header>
+          <span>
+            <strong>{post.subreddit_name_prefixed}</strong>
+            by
+            <strong>{post.author}</strong>
+          </span>
+        </header>
         <section>
           <h3 className={styles.postcard__title}>{post.title}</h3>
           {post.url && <img className={styles.image} src={post.url} alt="" />}
         </section>
         <footer>
           <span>
-            <strong>{post.author}</strong>
+            <TiMessage size={20} /> {post.num_comments}
           </span>
           <span className={styles.createTime}>
             {moment.unix(post.created).fromNow()}
-          </span>
-          <span>
-            <TiMessage size={20} /> {post.num_comments}
           </span>
         </footer>
       </div>

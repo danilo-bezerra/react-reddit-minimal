@@ -7,10 +7,13 @@ import React, { useContext } from "react";
 
 import { CiMenuBurger } from "react-icons/ci";
 import SidebarItemSkeleton from "../LoadingSkeletons/SidebarItemSkeleton";
+import { useNavigate } from "react-router-dom";
 
 export function Sidebar() {
   const [subReddits, setSubReddits] = React.useState<SubRedditModel[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
+
+  const navigate = useNavigate();
 
   const { selectSubReddit, selectedSubReddit } = useContext(RedditContext);
 
@@ -18,7 +21,7 @@ export function Sidebar() {
 
   function toggleSidebarVisibility() {
     if (sidebarRef.current) {
-      console.log(sidebarRef.current.classList.toggle(styles.active));
+      sidebarRef.current.classList.toggle(styles.active);
     }
   }
 
@@ -43,8 +46,11 @@ export function Sidebar() {
     }
 
     getSubReddits();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  React.useEffect(() => {
+    navigate("/");
+  }, [selectedSubReddit]);
 
   return (
     <>
@@ -93,6 +99,7 @@ export function Sidebar() {
                         "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484366.jpg"
                       }
                       alt={s.title}
+                      style={{ border: `2px solid ${s.primary_color}` }}
                     />
                     <span>{s.title}</span>
                   </button>

@@ -8,7 +8,8 @@ interface IRedditContext {
 
 export const RedditContext = createContext<IRedditContext>({
   selectedSubReddit: null,
-  selectSubReddit: (s: SubRedditModel) => undefined,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  selectSubReddit: (_s: SubRedditModel) => undefined,
 });
 
 type Props = {
