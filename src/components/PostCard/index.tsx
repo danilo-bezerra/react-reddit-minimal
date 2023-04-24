@@ -8,15 +8,15 @@ import {
   TiArrowDownOutline,
   TiMessage,
 } from "react-icons/ti";
+import { NavLink } from "react-router-dom";
 
 type Props = {
   post: SubRedditPostModel;
 };
 
 export default function PostCard({ post }: Props) {
-  console.log();
   return (
-    <div className={styles.postcard}>
+    <NavLink to={`/post/${post.id}`} className={styles.postcard}>
       <div className={styles.scoreContainer}>
         <TiArrowUpOutline size={24} />
         <span>{post.score}</span>
@@ -43,6 +43,6 @@ export default function PostCard({ post }: Props) {
           </span>
         </footer>
       </div>
-    </div>
+    </NavLink>
   );
 }

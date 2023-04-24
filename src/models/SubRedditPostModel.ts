@@ -9,4 +9,5 @@ export interface SubRedditPostModel {
   created: number;
   url: string;
   subreddit_name_prefixed: string;
+  permalink: string
 }
