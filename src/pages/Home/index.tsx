@@ -6,6 +6,7 @@ import { RedditContext } from "../../contexts/RedditContext";
 import { SubRedditPostsDTO } from "../../dtos/SubRedditPostsDTO";
 import { SubRedditPostModel } from "../../models/SubRedditPostModel";
 import { redditApi } from "../../services/api";
+import PostCardList from "../../components/PostCardList";
 
 // type Props = {
 
@@ -43,11 +44,7 @@ export function HomePage() {
   return (
     <div>
       Home {selectedSubReddit?.title}
-      <div>
-        {posts.map((p) => (
-          <PostCard key={p.id} post={p} />
-        ))}
-      </div>
+      <PostCardList posts={posts} />
     </div>
   );
 }
