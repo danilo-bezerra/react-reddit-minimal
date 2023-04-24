@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
-import PostCard from "../../components/PostCard";
+
 import { RedditContext } from "../../contexts/RedditContext";
 import { SubRedditPostsDTO } from "../../dtos/SubRedditPostsDTO";
 import { SubRedditPostModel } from "../../models/SubRedditPostModel";

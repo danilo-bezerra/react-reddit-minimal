@@ -1,13 +1,6 @@
-import { SubRedditPostModel } from "../../models/SubRedditPostModel";
-import moment from "moment";
-
 import styles from "./styles.module.scss";
 
-import {
-  TiArrowUpOutline,
-  TiArrowDownOutline,
-  TiMessage,
-} from "react-icons/ti";
+import { SubRedditPostModel } from "../../models/SubRedditPostModel";
 import PostCard from "../PostCard";
 
 type Props = {

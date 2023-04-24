@@ -1,5 +1,3 @@
-import moment from "moment";
-
 import styles from "./styles.module.scss";
 
 import {
