@@ -8,7 +8,6 @@ import PostCardSkeleton from "../../components/LoadingSkeletons/PostSkeleton";
 import PostCard from "../../components/PostCard";
 import { CommentsDTO } from "../../dtos/CommentsDTO";
 import { CommentModel } from "../../models/CommentModel";
-import { Comment } from "../../components/Comment";
 import { CommentList } from "../../components/CommentList";
 
 // type Props = {
