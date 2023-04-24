@@ -7,6 +7,7 @@ import { SubRedditPostsDTO } from "../../dtos/SubRedditPostsDTO";
 import { SubRedditPostModel } from "../../models/SubRedditPostModel";
 import { redditApi } from "../../services/api";
 import PostCardList from "../../components/PostCardList";
+import PostCardSkeleton from "../../components/LoadingSkeletons/PostSkeleton";
 
 // type Props = {
 
@@ -14,6 +15,7 @@ import PostCardList from "../../components/PostCardList";
 
 export function HomePage() {
   const [posts, setPosts] = useState<SubRedditPostModel[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { selectedSubReddit } = useContext(RedditContext);
 
@@ -22,6 +24,7 @@ export function HomePage() {
   useEffect(() => {
     async function getSubRedditPosts() {
       try {
+        setIsLoading(true);
         const res = await redditApi.get<SubRedditPostsDTO>(
           `${selectedSubReddit?.url}.json`
         );
@@ -33,6 +36,8 @@ export function HomePage() {
         setPosts(posts);
       } catch {
         console.log("Erro Home");
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -42,9 +47,17 @@ export function HomePage() {
   }, [selectedSubReddit]);
 
   return (
-    <div>
-      Home {selectedSubReddit?.title}
-      <PostCardList posts={posts} />
-    </div>
+    <main className={styles.main}>
+      {isLoading ? (
+        <>
+          <PostCardSkeleton />
+          <PostCardSkeleton />
+          <PostCardSkeleton />
+          <PostCardSkeleton />
+        </>
+      ) : (
+        <PostCardList posts={posts} />
+      )}
+    </main>
   );
 }

@@ -6,9 +6,11 @@ import styles from "./styles.module.scss";
 import React, { useContext } from "react";
 
 import { CiMenuBurger } from "react-icons/ci";
+import SidebarItemSkeleton from "../LoadingSkeletons/SidebarItemSkeleton";
 
 export function Sidebar() {
   const [subReddits, setSubReddits] = React.useState<SubRedditModel[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   const { selectSubReddit, selectedSubReddit } = useContext(RedditContext);
 
@@ -23,6 +25,7 @@ export function Sidebar() {
   React.useEffect(() => {
     async function getSubReddits() {
       try {
+        setIsLoading(true);
         const res = await redditApi.get<SubRedditsDTO>("/subreddits.json");
         const subReddits: SubRedditModel[] = [];
         res.data.data.children.forEach((o) => {
@@ -34,6 +37,8 @@ export function Sidebar() {
         selectSubReddit(subReddits[0]);
       } catch {
         console.log("Error");
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -55,30 +60,44 @@ export function Sidebar() {
         </header>
         <nav>
           <ul>
-            {subReddits.map((s) => (
-              <li
-                key={s.id}
-                className={`${styles.nav__item} ${
-                  selectedSubReddit?.id == s.id ? styles.selected : ""
-                }`}
-              >
-                <button
-                  onClick={() => selectSubReddit(s)}
-                  className={`${
+            {isLoading ? (
+              <>
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+                <SidebarItemSkeleton />
+              </>
+            ) : (
+              subReddits.map((s) => (
+                <li
+                  key={s.id}
+                  className={`${styles.nav__item} ${
                     selectedSubReddit?.id == s.id ? styles.selected : ""
                   }`}
                 >
-                  <img
-                    src={
-                      s.icon_img ||
-                      "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484366.jpg"
-                    }
-                    alt={s.title}
-                  />
-                  <span>{s.title}</span>
-                </button>
-              </li>
-            ))}
+                  <button
+                    onClick={() => selectSubReddit(s)}
+                    className={`${
+                      selectedSubReddit?.id == s.id ? styles.selected : ""
+                    }`}
+                  >
+                    <img
+                      src={
+                        s.icon_img ||
+                        "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484366.jpg"
+                      }
+                      alt={s.title}
+                    />
+                    <span>{s.title}</span>
+                  </button>
+                </li>
+              ))
+            )}
           </ul>
         </nav>
       </aside>

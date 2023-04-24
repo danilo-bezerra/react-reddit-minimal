@@ -1,0 +1,40 @@
+.postcard {
+  display: flex;
+  box-shadow: 5px 5px 15px #0005;
+
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: #1a1a1b;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc5;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.scoreContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #aaa;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    margin-top: auto;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+}

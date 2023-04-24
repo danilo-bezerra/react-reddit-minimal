@@ -2,6 +2,7 @@
   position: sticky;
   top: 0;
   max-width: 270px;
+  width: 100%;
   padding: 1rem 0;
 
   height: 100vh;
@@ -24,6 +25,7 @@
   ul {
     overflow-y: scroll;
     height: calc(100vh - 80px);
+    overflow-x: hidden;
   }
 }
 
