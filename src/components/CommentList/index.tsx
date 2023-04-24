@@ -1,5 +1,4 @@
 import { CommentModel } from "../../models/CommentModel";
-import { formatTimestamp } from "../../utils/formatTimestamp";
 import { Comment } from "../Comment";
 import styles from "./styles.module.scss";
 

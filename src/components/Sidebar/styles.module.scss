@@ -73,14 +73,6 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    &.active {
-      position: absolute;
-      right: 0;
-      left: 0;
-      max-width: initial;
-      background-color: red;
-    }
-
     header {
       padding: 0 1rem;
     }

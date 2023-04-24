@@ -9,6 +9,9 @@ import { CiMenuBurger } from "react-icons/ci";
 import SidebarItemSkeleton from "../LoadingSkeletons/SidebarItemSkeleton";
 import { useNavigate } from "react-router-dom";
 
+import "./styles.scss";
+import { toggleSidebarVisibility } from "../../utils/toggleSidebarVisibility";
+
 export function Sidebar() {
   const [subReddits, setSubReddits] = React.useState<SubRedditModel[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -19,11 +22,11 @@ export function Sidebar() {
 
   const sidebarRef = React.useRef<HTMLDivElement>(null);
 
-  function toggleSidebarVisibility() {
-    if (sidebarRef.current) {
-      sidebarRef.current.classList.toggle(styles.active);
-    }
-  }
+  // function toggleSidebarVisibility() {
+  //   if (sidebarRef.current) {
+  //     sidebarRef.current.classList.toggle("active");
+  //   }
+  // }
 
   React.useEffect(() => {
     async function getSubReddits() {
@@ -54,7 +57,7 @@ export function Sidebar() {
 
   return (
     <>
-      <aside ref={sidebarRef} className={`${styles.sidebar}`}>
+      <aside ref={sidebarRef} id="sidebar" className={`${styles.sidebar}`}>
         <header>
           <h2>Subreddits</h2>
 
@@ -88,7 +91,10 @@ export function Sidebar() {
                   }`}
                 >
                   <button
-                    onClick={() => selectSubReddit(s)}
+                    onClick={() => {
+                      selectSubReddit(s);
+                      toggleSidebarVisibility();
+                    }}
                     className={`${
                       selectedSubReddit?.id == s.id ? styles.selected : ""
                     }`}
