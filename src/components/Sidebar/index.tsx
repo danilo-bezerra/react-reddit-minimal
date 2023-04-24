@@ -43,6 +43,7 @@ export function Sidebar() {
     }
 
     getSubReddits();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
