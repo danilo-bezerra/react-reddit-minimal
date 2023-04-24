@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-import Logo from "../../assets/reddit-logo-original-small.png";
+//import Logo from "../../assets/reddit-logo-original-small.png";
 import { SearchForm } from "../SearchForm";
 import { NavLink } from "react-router-dom";
 
