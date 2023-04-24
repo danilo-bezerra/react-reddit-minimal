@@ -1,0 +1,68 @@
+.postcard {
+  display: flex;
+
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: #1a1a1b;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc5;
+
+  .scoreContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: #aaa;
+
+    span {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+  }
+
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+    section {
+      .postcard__title {
+        font-size: 1.125rem;
+        line-height: 22px;
+        margin-bottom: 0.75rem;
+      }
+
+      .image {
+        width: 100%;
+        border-radius: 0.25rem;
+      }
+    }
+
+    footer {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 0.5rem;
+      margin-top: auto;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.8rem;
+
+        &.createTime {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        strong {
+          color: #28f;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
