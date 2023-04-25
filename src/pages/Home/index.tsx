@@ -20,8 +20,6 @@ export function HomePage() {
 
   const { selectedSubReddit } = useContext(RedditContext);
 
-  console.log(selectedSubReddit);
-
   useEffect(() => {
     async function getSubRedditPosts() {
       try {
@@ -31,12 +29,10 @@ export function HomePage() {
             ? `${selectedSubReddit?.url}.json`
             : `${selectedSubReddit?.url}${sortType}.json`;
         const res = await redditApi.get<SubRedditPostsDTO>(path);
-        console.log(path);
         const posts: SubRedditPostModel[] = [];
         res.data.data.children.forEach((p) => {
           posts.push(p.data);
         });
-        console.log(posts);
         setPosts(posts);
       } catch {
         console.log("Erro Home");

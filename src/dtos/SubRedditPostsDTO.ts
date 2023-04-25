@@ -12,6 +12,7 @@ interface SubRedditPostDTO {
     created: number;
     url: string;
     subreddit_name_prefixed: string;
+    thumbnail: string;
   };
 }
 

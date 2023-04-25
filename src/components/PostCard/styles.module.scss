@@ -11,6 +11,11 @@
   text-decoration: none;
   color: #eee;
 
+  video {
+    width: 100%;
+    // border: 1px solid #28f;
+  }
+
   .scoreContainer {
     display: flex;
     align-items: center;

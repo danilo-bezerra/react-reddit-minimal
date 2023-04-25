@@ -32,12 +32,12 @@ export function PostPage() {
         setPost(res.data[0].data.children[0].data);
         const comments: CommentModel[] = [];
         res.data[1].data.children.forEach((c) => {
-          console.log({ data: c.data, c, co: c.data });
+          //console.log({ data: c.data, c, co: c.data });
           comments.push(c.data);
         });
         //console.log(res.data[0].data.children[0].data);
-        console.log(res.data[1].data.children);
-        console.log("| | |");
+        //console.log(res.data[1].data.children);
+        //console.log("| | |");
         setPostComments(comments);
       } catch {
         console.log("Erro Home");
@@ -51,7 +51,7 @@ export function PostPage() {
     }
   }, [id]);
 
-  console.log(post);
+  console.log({ post });
 
   return (
     <main className={styles.main}>

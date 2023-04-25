@@ -9,5 +9,12 @@ export interface SubRedditPostModel {
   created: number;
   url: string;
   subreddit_name_prefixed: string;
-  permalink: string
+  permalink: string;
+  media?: {
+    reddit_video: {
+      dash_url: string;
+      fallback_url: string;
+    };
+  };
+  thumbnail: string
 }

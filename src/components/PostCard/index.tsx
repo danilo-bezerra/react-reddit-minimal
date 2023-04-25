@@ -33,6 +33,16 @@ export default function PostCard({ post }: Props) {
         <section>
           <h3 className={styles.postcard__title}>{post.title}</h3>
           {post.url && <img className={styles.image} src={post.url} alt="" />}
+          {post?.media && (
+            <video
+              src={post?.media.reddit_video?.fallback_url}
+              preload="metadata"
+              controls
+              poster={post.thumbnail}
+            >
+              Tem video
+            </video>
+          )}
         </section>
         <footer>
           <span>

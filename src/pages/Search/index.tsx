@@ -30,7 +30,7 @@ export function SearchPage() {
         res.data.data.children.forEach((p) => {
           posts.push(p.data);
         });
-        console.log(posts);
+
         setPosts(posts);
       } catch {
         console.log("Erro Home");
@@ -43,8 +43,6 @@ export function SearchPage() {
       getSubRedditPosts();
     }
   }, [q, searchType]);
-
-  console.log(posts);
 
   return (
     <main className={styles.main}>

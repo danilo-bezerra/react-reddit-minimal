@@ -9,8 +9,6 @@ type Props = {
 };
 
 export function Comment({ comment }: Props) {
-  console.log({ comment: comment });
-
   if (!comment?.body) {
     return null;
   }
