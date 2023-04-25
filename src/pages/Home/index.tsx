@@ -1,13 +1,13 @@
 import styles from "./styles.module.scss";
 import { useContext, useEffect, useState } from "react";
 
-
 import { RedditContext } from "../../contexts/RedditContext";
 import { SubRedditPostsDTO } from "../../dtos/SubRedditPostsDTO";
 import { SubRedditPostModel } from "../../models/SubRedditPostModel";
 import { redditApi } from "../../services/api";
 import PostCardList from "../../components/PostCardList";
 import PostCardSkeleton from "../../components/LoadingSkeletons/PostSkeleton";
+import { Button } from "../../components/Button";
 
 // type Props = {
 
@@ -16,6 +16,7 @@ import PostCardSkeleton from "../../components/LoadingSkeletons/PostSkeleton";
 export function HomePage() {
   const [posts, setPosts] = useState<SubRedditPostModel[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortType, setSortType] = useState<"best" | "new" | "top">("best");
 
   const { selectedSubReddit } = useContext(RedditContext);
 
@@ -25,9 +26,12 @@ export function HomePage() {
     async function getSubRedditPosts() {
       try {
         setIsLoading(true);
-        const res = await redditApi.get<SubRedditPostsDTO>(
-          `${selectedSubReddit?.url}.json`
-        );
+        const path =
+          sortType == "best"
+            ? `${selectedSubReddit?.url}.json`
+            : `${selectedSubReddit?.url}${sortType}.json`;
+        const res = await redditApi.get<SubRedditPostsDTO>(path);
+        console.log(path);
         const posts: SubRedditPostModel[] = [];
         res.data.data.children.forEach((p) => {
           posts.push(p.data);
@@ -44,10 +48,30 @@ export function HomePage() {
     if (selectedSubReddit) {
       getSubRedditPosts();
     }
-  }, [selectedSubReddit]);
+  }, [selectedSubReddit, sortType]);
 
   return (
     <main className={styles.main}>
+      <div className={styles.buttonRow}>
+        <Button
+          variant={sortType == "best" ? "primary" : undefined}
+          onClick={() => setSortType("best")}
+        >
+          Best
+        </Button>
+        <Button
+          variant={sortType == "top" ? "primary" : undefined}
+          onClick={() => setSortType("top")}
+        >
+          Top
+        </Button>
+        <Button
+          variant={sortType == "new" ? "primary" : undefined}
+          onClick={() => setSortType("new")}
+        >
+          New
+        </Button>
+      </div>
       {isLoading ? (
         <>
           <PostCardSkeleton />
@@ -56,7 +80,9 @@ export function HomePage() {
           <PostCardSkeleton />
         </>
       ) : (
-        <PostCardList posts={posts} />
+        <>
+          <PostCardList posts={posts} />
+        </>
       )}
     </main>
   );

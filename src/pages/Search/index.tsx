@@ -6,10 +6,7 @@ import { redditApi } from "../../services/api";
 import { SubRedditPostsDTO } from "../../dtos/SubRedditPostsDTO";
 import PostCardList from "../../components/PostCardList";
 import PostCardSkeleton from "../../components/LoadingSkeletons/PostSkeleton";
-
-// type Props = {
-
-// };
+import { Button } from "../../components/Button";
 
 export function SearchPage() {
   const [posts, setPosts] = useState<SubRedditPostModel[]>([]);
@@ -51,32 +48,26 @@ export function SearchPage() {
 
   return (
     <main className={styles.main}>
-      <h2>Showing search results for "{q}"</h2>
+      <h2 className={styles.searchTitle}>Showing search results for "{q}"</h2>
       <div className={styles.searchTypeButtons}>
-        <button
-          className={`${styles.button} ${
-            searchType == "link" ? styles.buttonActive : ""
-          }`}
+        <Button
+          variant={searchType == "link" ? "primary" : undefined}
           onClick={() => setSearchType("link")}
         >
           Posts
-        </button>
-        <button
-          className={`${styles.button} ${
-            searchType == "comment" ? styles.buttonActive : ""
-          }`}
+        </Button>
+        <Button
+          variant={searchType == "comment" ? "primary" : undefined}
           onClick={() => setSearchType("comment")}
         >
           Comments
-        </button>
-        <button
-          className={`${styles.button} ${
-            searchType == "sr" ? styles.buttonActive : ""
-          }`}
+        </Button>
+        <Button
+          variant={searchType == "sr" ? "primary" : undefined}
           onClick={() => setSearchType("sr")}
         >
           Communities
-        </button>
+        </Button>
       </div>
       {isLoading ? (
         <>

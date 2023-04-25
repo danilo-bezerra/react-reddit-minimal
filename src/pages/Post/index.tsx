@@ -9,6 +9,7 @@ import PostCard from "../../components/PostCard";
 import { CommentsDTO } from "../../dtos/CommentsDTO";
 import { CommentModel } from "../../models/CommentModel";
 import { CommentList } from "../../components/CommentList";
+import CommentSkeleton from "../../components/LoadingSkeletons/CommentSkeleton";
 
 // type Props = {
 
@@ -28,9 +29,6 @@ export function PostPage() {
         const res = await redditApi.get<[SubRedditPostsDTO, CommentsDTO]>(
           `/comments/${id}.json`
         );
-        // const postData: SubRedditPostModel = res.data[0].data.children[0]
-        // setPost(postData);
-        //setPost(posts);
         setPost(res.data[0].data.children[0].data);
         const comments: CommentModel[] = [];
         res.data[1].data.children.forEach((c) => {
@@ -60,6 +58,12 @@ export function PostPage() {
       {isLoading ? (
         <>
           <PostCardSkeleton />
+          <h2>Comments</h2>
+          <CommentSkeleton />
+          <CommentSkeleton />
+          <CommentSkeleton />
+          <CommentSkeleton />
+          <CommentSkeleton />
         </>
       ) : (
         <>

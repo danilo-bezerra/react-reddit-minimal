@@ -14,6 +14,10 @@
     align-items: center;
     margin-bottom: 1.5rem;
 
+    .iconButton {
+      display: none;
+    }
+
     h2 {
       background-color: #1a1a1b;
       padding: 0 1rem;
@@ -67,22 +71,14 @@
   }
 }
 
-.iconButton {
-  display: none;
-}
-
 @media (max-width: 768px) {
   .sidebar {
     header {
       padding: 0 1rem;
-    }
-  }
 
-  .iconButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    cursor: pointer;
+      .iconButton {
+        display: flex;
+      }
+    }
   }
 }

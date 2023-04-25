@@ -1,0 +1,21 @@
+.commentContainer {
+  padding-bottom: 1rem;
+  max-width: 600px;
+  border: 1px solid #ccc5;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  box-shadow: 5px 5px 15px #0005;
+  background-color: #1a1a1b;
+  width: 100%;
+  list-style: none;
+
+
+  footer {
+    margin-top: 0.5rem;
+    .scoreContainer {
+      display: flex;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+    }
+  }
+}

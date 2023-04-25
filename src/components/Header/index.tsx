@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { toggleSidebarVisibility } from "../../utils/toggleSidebarVisibility";
 
 import { CiMenuBurger } from "react-icons/ci";
+import { IconButton } from "../IconButton";
 
 export default function Header() {
   return (
@@ -18,9 +19,11 @@ export default function Header() {
         />
       </NavLink>
       <SearchForm />
-      <button className={styles.iconButton} onClick={toggleSidebarVisibility}>
-        <CiMenuBurger size={28} />
-      </button>
+      <IconButton
+        className={styles.iconButton}
+        onClick={toggleSidebarVisibility}
+        icon={<CiMenuBurger size={28} />}
+      />
     </header>
   );
 }

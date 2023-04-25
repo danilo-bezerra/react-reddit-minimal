@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./styles.scss";
 import { toggleSidebarVisibility } from "../../utils/toggleSidebarVisibility";
+import { IconButton } from "../IconButton";
 
 export function Sidebar() {
   const [subReddits, setSubReddits] = React.useState<SubRedditModel[]>([]);
@@ -61,12 +62,11 @@ export function Sidebar() {
         <header>
           <h2>Subreddits</h2>
 
-          <button
+          <IconButton
             className={styles.iconButton}
             onClick={toggleSidebarVisibility}
-          >
-            <CiMenuBurger size={28} />
-          </button>
+            icon={<CiMenuBurger size={28} />}
+          />
         </header>
         <nav>
           <ul>

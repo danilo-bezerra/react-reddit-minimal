@@ -1,4 +1,11 @@
 .main {
   padding: 1rem;
   flex: 1;
+
+  .buttonRow {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
 }

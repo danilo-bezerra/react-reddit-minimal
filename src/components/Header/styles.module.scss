@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 1rem;
   height: 60px;
   padding: 0.25rem 1rem;
   background-color: #1a1a1b;
@@ -16,13 +16,14 @@
   }
 
   .iconButton {
-    background-color: transparent;
-    cursor: pointer;
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
-  .iconButton {
-    display: flex;
+  .headerContainer {
+    .iconButton {
+      display: flex;
+    }
   }
 }
