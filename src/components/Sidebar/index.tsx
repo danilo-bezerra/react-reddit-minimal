@@ -7,7 +7,7 @@ import React, { useContext } from "react";
 
 import { CiMenuBurger } from "react-icons/ci";
 import SidebarItemSkeleton from "../LoadingSkeletons/SidebarItemSkeleton";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./styles.scss";
 import { toggleSidebarVisibility } from "../../utils/toggleSidebarVisibility";
@@ -18,16 +18,11 @@ export function Sidebar() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { selectSubReddit, selectedSubReddit } = useContext(RedditContext);
 
   const sidebarRef = React.useRef<HTMLDivElement>(null);
-
-  // function toggleSidebarVisibility() {
-  //   if (sidebarRef.current) {
-  //     sidebarRef.current.classList.toggle("active");
-  //   }
-  // }
 
   React.useEffect(() => {
     async function getSubReddits() {
@@ -87,13 +82,18 @@ export function Sidebar() {
                 <li
                   key={s.id}
                   className={`${styles.nav__item} ${
-                    selectedSubReddit?.id == s.id ? styles.selected : ""
+                    selectedSubReddit?.id == s.id && location.pathname == "/"
+                      ? styles.selected
+                      : ""
                   }`}
                 >
                   <button
                     onClick={() => {
                       selectSubReddit(s);
                       toggleSidebarVisibility();
+                      if (location.pathname != "/") {
+                        navigate("/");
+                      }
                     }}
                     className={`${
                       selectedSubReddit?.id == s.id ? styles.selected : ""

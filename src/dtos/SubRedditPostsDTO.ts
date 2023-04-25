@@ -13,6 +13,8 @@ interface SubRedditPostDTO {
     url: string;
     subreddit_name_prefixed: string;
     thumbnail: string;
+    selftext: string;
+    selftext_html: string
   };
 }
 

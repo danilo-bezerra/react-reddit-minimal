@@ -43,6 +43,19 @@
         margin-top: 0.25rem;
       }
 
+      .text {
+        position: relative;
+
+        &.limitLines {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3; /* number of lines to show */
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+      }
+
       .image {
         width: 100%;
         border-radius: 0.25rem;

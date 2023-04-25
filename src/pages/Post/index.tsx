@@ -51,27 +51,27 @@ export function PostPage() {
     }
   }, [id]);
 
-  console.log({ post });
+  if (isLoading) {
+    return (
+      <main className={styles.main}>
+        <PostCardSkeleton />
+        <h2>Comments</h2>
+        <CommentSkeleton />
+        <CommentSkeleton />
+        <CommentSkeleton />
+        <CommentSkeleton />
+        <CommentSkeleton />
+      </main>
+    );
+  }
+
+  console.log(post);
 
   return (
     <main className={styles.main}>
-      {isLoading ? (
-        <>
-          <PostCardSkeleton />
-          <h2>Comments</h2>
-          <CommentSkeleton />
-          <CommentSkeleton />
-          <CommentSkeleton />
-          <CommentSkeleton />
-          <CommentSkeleton />
-        </>
-      ) : (
-        <>
-          <PostCard post={post!} />
-          <h2>Comments</h2>
-          <CommentList comments={postComments} />
-        </>
-      )}
+      <PostCard post={post!} />
+      <h2>Comments</h2>
+      <CommentList comments={postComments} />
     </main>
   );
 }

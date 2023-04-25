@@ -16,5 +16,7 @@ export interface SubRedditPostModel {
       fallback_url: string;
     };
   };
-  thumbnail: string
+  thumbnail: string;
+  selftext: string;
+  selftext_html: string;
 }

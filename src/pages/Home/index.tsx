@@ -77,7 +77,7 @@ export function HomePage() {
         </>
       ) : (
         <>
-          <PostCardList posts={posts} />
+          <PostCardList posts={posts} limitLines={true} />
         </>
       )}
     </main>

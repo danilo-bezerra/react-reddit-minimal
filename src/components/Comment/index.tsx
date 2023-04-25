@@ -1,3 +1,4 @@
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { CommentModel } from "../../models/CommentModel";
 import { formatTimestamp } from "../../utils/formatTimestamp";
 import styles from "./styles.module.scss";
@@ -19,7 +20,9 @@ export function Comment({ comment }: Props) {
         <h4>{comment.author}</h4>
         <span>{formatTimestamp(comment.created)}</span>
       </header>
-      <p>{comment.body}</p>
+      <p>
+        <ReactMarkdown>{comment.body}</ReactMarkdown>
+      </p>
       <footer>
         <div className={styles.scoreContainer}>
           <TiArrowUpOutline size={20} />

@@ -3,6 +3,8 @@ import moment from "moment";
 
 import styles from "./styles.module.scss";
 
+import ReactMarkdown from "react-markdown";
+
 import {
   TiArrowUpOutline,
   TiArrowDownOutline,
@@ -12,9 +14,10 @@ import { NavLink } from "react-router-dom";
 
 type Props = {
   post: SubRedditPostModel;
+  limitLines?: boolean;
 };
 
-export default function PostCard({ post }: Props) {
+export default function PostCard({ post, limitLines = false }: Props) {
   return (
     <NavLink to={`/post/${post.id}`} className={styles.postcard}>
       <div className={styles.scoreContainer}>
@@ -32,6 +35,15 @@ export default function PostCard({ post }: Props) {
         </header>
         <section>
           <h3 className={styles.postcard__title}>{post.title}</h3>
+          {post.selftext && (
+            <p
+              className={`${styles.text} ${
+                limitLines ? styles.limitLines : ""
+              }`}
+            >
+              {post.selftext}
+            </p>
+          )}
           {post.url && <img className={styles.image} src={post.url} alt="" />}
           {post?.media && (
             <video

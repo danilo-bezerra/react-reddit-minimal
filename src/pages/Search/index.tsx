@@ -44,6 +44,10 @@ export function SearchPage() {
     }
   }, [q, searchType]);
 
+  if (searchType == "comment") {
+    console.log({ posts });
+  }
+
   return (
     <main className={styles.main}>
       <h2 className={styles.searchTitle}>Showing search results for "{q}"</h2>
@@ -60,12 +64,12 @@ export function SearchPage() {
         >
           Comments
         </Button>
-        <Button
+        {/* <Button
           variant={searchType == "sr" ? "primary" : undefined}
           onClick={() => setSearchType("sr")}
         >
           Communities
-        </Button>
+        </Button> */}
       </div>
       {isLoading ? (
         <>
@@ -75,7 +79,7 @@ export function SearchPage() {
           <PostCardSkeleton />
         </>
       ) : (
-        <PostCardList posts={posts} />
+        <PostCardList posts={posts} limitLines={true} />
       )}
     </main>
   );
