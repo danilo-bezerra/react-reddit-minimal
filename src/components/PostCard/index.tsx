@@ -3,8 +3,6 @@ import moment from "moment";
 
 import styles from "./styles.module.scss";
 
-import ReactMarkdown from "react-markdown";
-
 import {
   TiArrowUpOutline,
   TiArrowDownOutline,
