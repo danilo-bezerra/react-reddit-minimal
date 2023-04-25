@@ -44,7 +44,8 @@
       }
 
       .text {
-        position: relative;
+        word-wrap: break-word;
+        word-break: break-all;
 
         &.limitLines {
           overflow: hidden;
@@ -75,11 +76,11 @@
     }
 
     footer {
-      position: relative;
       display: flex;
       justify-content: space-between;
       padding-top: 0.5rem;
       margin-top: auto;
+      max-width: 100%;
     }
   }
 }

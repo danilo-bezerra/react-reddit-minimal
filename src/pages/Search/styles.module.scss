@@ -1,6 +1,8 @@
 .main {
   flex: 1;
   padding: 1rem;
+  max-width: 600px;
+  width: 100%;
 }
 
 .searchTitle {
@@ -8,7 +10,6 @@
   text-align: center;
   margin-bottom: 1rem;
 }
-
 
 .searchTypeButtons {
   display: flex;
